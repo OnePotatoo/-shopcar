@@ -2,7 +2,7 @@
   <div>
     <MyHeader title="淘宝购物车" background="tomato" color="#fff" />
     <div class="main">
-      <MyGoods />
+      <MyGoods v-for="item in list" :key="item.goods_id" :list="item" />
     </div>
     <MyFooter />
   </div>
