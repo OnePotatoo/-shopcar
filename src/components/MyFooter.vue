@@ -9,7 +9,7 @@
     <!-- 合计 -->
     <div>
       <span>合计:</span>
-      <span class="price">¥ 0</span>
+      <span class="price">¥ {{ allPrice }}</span>
     </div>
     <!-- 按钮 -->
     <button type="button" class="footer-btn btn btn-primary">
@@ -30,6 +30,13 @@ export default {
     allCount() {
       return this.list.reduce((pre, curr) => {
         return curr.goods_state ? pre + curr.goods_count : pre
+      }, 0)
+    },
+    allPrice() {
+      return this.list.reduce((pre, curr) => {
+        return curr.goods_state
+          ? pre + curr.goods_count * curr.goods_price
+          : pre
       }, 0)
     }
   }
