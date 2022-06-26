@@ -3,7 +3,12 @@
   <div class="my-footer">
     <!-- 全选 -->
     <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" id="footerCheck" />
+      <input
+        type="checkbox"
+        class="custom-control-input"
+        id="footerCheck"
+        v-model="isAll"
+      />
       <label class="custom-control-label" for="footerCheck">全选</label>
     </div>
     <!-- 合计 -->
@@ -38,6 +43,14 @@ export default {
           ? pre + curr.goods_count * curr.goods_price
           : pre
       }, 0)
+    },
+    isAll: {
+      get() {
+        return this.list.every((item) => item.goods_state)
+      },
+      set(value) {
+        this.list.forEach((item) => (item.goods_state = value))
+      }
     }
   }
 }
