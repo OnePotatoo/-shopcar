@@ -1,13 +1,39 @@
 <template>
   <div class="my-counter">
-    <button type="button" class="btn btn-light">-</button>
-    <input type="number" class="form-control inp" />
-    <button type="button" class="btn btn-light">+</button>
+    <button type="button" class="btn btn-light" @click="list.goods_count--">
+      -
+    </button>
+    <input
+      type="number"
+      class="form-control inp"
+      v-model.number="list.goods_count"
+    />
+    <button type="button" class="btn btn-light" @click="list.goods_count++">
+      +
+    </button>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    list: {
+      type: Object,
+      required: true
+    }
+  },
+  watch: {
+    list: {
+      deep: true,
+      immediate: true,
+      handler() {
+        return this.list.goods_count < 0
+          ? (this.list.goods_count = 0)
+          : this.list.goods_count
+      }
+    }
+  }
+}
 </script>
 
 <style lang="less" scoped>

@@ -12,12 +12,28 @@
       <span class="price">¥ 0</span>
     </div>
     <!-- 按钮 -->
-    <button type="button" class="footer-btn btn btn-primary">结算 ( 0 )</button>
+    <button type="button" class="footer-btn btn btn-primary">
+      结算 ( {{ allCount }} )
+    </button>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    list: {
+      type: Array,
+      required: true
+    }
+  },
+  computed: {
+    allCount() {
+      return this.list.reduce((pre, curr) => {
+        return curr.goods_state ? pre + curr.goods_count : pre
+      }, 0)
+    }
+  }
+}
 </script>
 
 <style lang="less" scoped>

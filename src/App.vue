@@ -4,7 +4,7 @@
     <div class="main">
       <MyGoods v-for="item in list" :key="item.goods_id" :list="item" />
     </div>
-    <MyFooter />
+    <MyFooter :list="list" />
   </div>
 </template>
 
