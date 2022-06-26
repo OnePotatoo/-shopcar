@@ -5,10 +5,10 @@
         <input
           type="checkbox"
           class="custom-control-input"
-          id="input"
+          :id="list.goods_id"
           v-model="list.goods_state"
         />
-        <label class="custom-control-label" for="input">
+        <label class="custom-control-label" :for="list.goods_id">
           <img :src="list.goods_img" alt="" />
         </label>
       </div>
